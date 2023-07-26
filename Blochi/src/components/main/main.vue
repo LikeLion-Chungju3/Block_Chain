@@ -7,6 +7,11 @@
           <img src="../../assets/banner3.png" />
         </carousel>
       </div>
+      <div class="gameButton-wrap">
+          <ul>
+            <li><router-link to="/game" exact>GAME</router-link></li>
+          </ul>
+      </div>
     </div>
   </template>
   
@@ -16,7 +21,7 @@
   export default {
     name: "main-carousel",
     components: {
-      carousel,
+      "carousel": carousel,
     },
     data () {
       return {

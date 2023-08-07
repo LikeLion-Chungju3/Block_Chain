@@ -1,5 +1,9 @@
-import gamePlay from './components/game/gamePlay.vue';
+import main from './components/main/main.vue';
+import gamePage from './components/main/gamePage';
+import point from './components/main/Point.vue';
 
 export default [
-    { path: '/game', component: gamePlay },
+    { path: '/', component: main},
+    { path: '/game', component: gamePage },
+    { path: '/point', component: point }
 ]

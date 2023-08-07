@@ -1,82 +1,102 @@
 <template>
-    <div class="main">
-      <div class="carosel-wrap">
-        <carousel v-bind="options" @initialized="init" @changed="changed">
-          <img src="../../assets/banner1.png" />
-          <img src="../../assets/banner2.png" />
-          <img src="../../assets/banner3.png" />
-        </carousel>
+  <div id="main">
+    <main-carousel></main-carousel>
+    <div class="button-wrap">
+      <div class="button1" v-bind:style="changeColor" @mouseover="changedColor" @mouseout="originalColor">
+        <button class="game-button" @click="$router.push('/game')">Beginner</button>
+        <div class="discription">초급</div>
       </div>
-      <div class="gameButton-wrap">
-          <ul>
-            <li><router-link to="/game" exact>GAME</router-link></li>
-          </ul>
+      <div class="button2">
+        <button class="game-button" @click="$router.push('/introduction')">Intermediate</button>
+        <div class="discription">중급</div>
       </div>
+      <div class="button3" >
+        <button class="game-button" @click="$router.push('/point')">Advanced</button>
+        <div class="discription">상급</div>
+      </div>
+      <div class="button4">
+        <button class="game-button" @click="$router.push('/point')">Events</button>
+        <div class="discription">이벤트 참여</div></div>
+      </div>
+    
     </div>
-  </template>
-  
-  <script>
-  import carousel from "vue-owl-carousel2"
+    
+</template>
 
-  export default {
-    name: "main-carousel",
-    components: {
-      "carousel": carousel,
-    },
-    data () {
-      return {
-        plugin: null,
-        options: {
-          autoplay: false,
-          items: 1,
-          startPosition: 0,
-          autoplayTimeout: 2000,
-        }
-      };
-    },
-    methods: {
-      handleScroll() {
-        window.addEventListener("scroll", () => {
-          let scrollT = window.scrollY
+<script>
 
-          if(scrollT > 0 && this.options.autoplay === false){
-            this.options.autoplay = true;
-            setTimeout(() => {
-              this.plugin.refresh();
-            }, 300);
-          } else if(scrollT === 0) {
-            this.options.autoplay = false;
-            setTimeout(() => {
-              this.plugin.refresh();
-            }, 300);
-          }
-        })
-      },
-      init() {
-        this.plugin = this.$children[0];
-      },
-      changed(e) {
-        this.options.startPosition = e.item.index;
+import { RouterView } from 'vue-router';
+import carousel from './carousel.vue';
+
+export default {
+  components:{
+    "main-carousel": carousel,
+    RouterView
+},
+  data () {
+    return{
+      changeColor: {
+        backgroundColor: "#e5e3c8"
       }
+    }
+  },
+  methods: {
+    changedColor: function() {
+      this.changeColor.backgroundColor = "#d9d6af";
     },
-    mounted() {
-      this.handleScroll();
-    },
-    destroyed() {
-      window.removeEventListener("scroll", this.handelScroll);
-    },
+    originalColor: function() {
+      this.changeColor.backgroundColor = "#e5e3c8";
+    }
   }
-  </script>
-  
-  <style scoped>
-  main-carousel {
-    border: 1px solid #000;
-    height: 3000px;
-  }
-  .carousel-wrap {
-    width: 300px;
-    margin: 0 auto;
-  }
-  
-  </style>
+}
+</script>
 
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@700&display=swap');
+
+#main {
+  background-color: #f0f6e2;
+  margin-bottom: 5vh;
+}
+.button-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  list-style-type: none;
+  /* margin-left: 10vw;
+  margin-right: 10vw; */
+  background-color: #e5e3c8;
+  text-align: center;
+}
+.game-button {
+  height: 7rem;
+  max-width: 800rem;
+  font-size: 3rem;
+  color: #302e16;
+  border-color: rgba(0,0,0,0);
+  background-color: rgba(0,0,0,0);
+  /* font-family: 'Indie Flower', cursive;  */
+  font-family: 'Yanone Kaffeesatz', sans-serif; 
+}
+
+.button1{
+  border-right: 2px solid #302e16;
+}
+
+.button2{
+  border-right: 2px solid #302e16;
+}
+.button3{
+  border-right: 2px solid #302e16;
+}
+.discription {
+  /* margin-left: 25px; */
+  word-wrap: break-word;
+  text-align: center;
+  align-items: center;
+  font-family: 'Gaegu', cursive;
+  font-size: 20px;
+}
+</style>

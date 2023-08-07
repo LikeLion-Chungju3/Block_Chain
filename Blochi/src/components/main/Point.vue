@@ -1,6 +1,8 @@
 <template>
     <div id ="gameBoard">
-      <h1>게임이 들어갈 페이지 입니다.</h1>
+      <div>
+        <h1>포인트 사용이 들어갈 공간입니다.</h1>
+      </div>
     </div>
   </template>
   
@@ -16,7 +18,9 @@
   </script>
   
   <style>
-  .gameBoard {
+  #gameBoard {
     background-color: aqua;
+    min-width: 400px;
+    min-height: 400px;
   }
   </style>

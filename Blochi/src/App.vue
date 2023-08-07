@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <app-main></app-main>
-    <app-footer></app-footer>
     <router-view></router-view>
+    <app-footer></app-footer>
+    
   </div>
 </template>
 
@@ -11,7 +11,8 @@
 import header from '../src/components/header/header.vue'
 import main from '../src/components/main/main.vue'
 import footer from '../src/components/footer/footer.vue'
-import gamePlay from '../src/components/game/gamePlay.vue'
+import carousel from '../src/components/main/carousel.vue';
+
 
 
 export default {
@@ -20,7 +21,8 @@ export default {
     'app-header': header,
     'app-main': main,
     'app-footer': footer,
-    'game-play': gamePlay,
+    'app-carousel': carousel,
+    // 'game-page': gamePage,
   },
   data () {
     return {
@@ -31,5 +33,7 @@ export default {
 </script>
 
 <style>
-
+#app {
+  background-color: #f0f6e2;
+}
 </style>

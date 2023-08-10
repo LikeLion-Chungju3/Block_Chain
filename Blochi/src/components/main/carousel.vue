@@ -72,9 +72,9 @@
   
   <style scoped>
 
-  #ca {
+  /* #ca {
     
-  }
+  } */
   .carousel {
     /* border: 1px solid #000; */
     position: relative;

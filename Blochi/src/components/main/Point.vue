@@ -1,19 +1,26 @@
 <template>
     <div id ="gameBoard">
-      <div>
-        <h1>포인트 사용이 들어갈 공간입니다.</h1>
+      <div class="event">
       </div>
     </div>
   </template>
-  
+
   <script>
+  import index2 from './Point.js'
+  
   export default {
-    
+    components: {
+      'index2': index2
+    },
     data () {
       return {
-
+        html, 
+        foo: null
       }
     }
+    // mounted() {
+    //   this.event = require('../main/index2.html')
+    // }
   }
   </script>
   

@@ -16,13 +16,12 @@
       </div>
       <div class="button4">
         <button class="game-button" @click="$router.push('/point')">Events</button>
-        <div class="discription">이벤트 참여</div></div>
+        <div class="discription">이벤트 참여</div>
       </div>
-    
     </div>
+  </div>
     
 </template>
-
 <script>
 
 import { RouterView } from 'vue-router';
@@ -36,7 +35,8 @@ export default {
   data () {
     return{
       changeColor: {
-        backgroundColor: "#e5e3c8"
+        backgroundColor: "#e5e3c8",
+        
       }
     }
   },

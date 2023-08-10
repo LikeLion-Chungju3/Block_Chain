@@ -4,8 +4,6 @@
         <div class="logo">Two Some Block</div>
         <div class="login">Login</div>
         <div>
-          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
         </div>
       </div>
       
@@ -13,8 +11,7 @@
   </template>
   
   <script>
-  import axios from 'axios';
-  
+
 
   export default {
     
@@ -22,6 +19,14 @@
       return {
         
       }
+    }, 
+    methods: {
+      
+    },
+    created() {
+        this.$http.get('https://vuejs-practice-7bdb9-default-rtdb.firebaseio.com/posts.json').then(function(data){
+            this.blogs = data.body.slice(0, 10);
+        });
     }
   }
   </script>

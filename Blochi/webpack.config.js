@@ -21,6 +21,7 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+            
           }
           // other vue-loader options go here
         }
@@ -36,7 +37,11 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      }
+      },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
     ]
   },
   resolve: {

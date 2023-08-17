@@ -1,94 +1,87 @@
 <template>
   <div id="ca">
     <div class="carousel">
-        <div class="carosel-wrap">
-            <carousel v-bind="options" @initialized="init" @changed="changed">
-                <!-- <img src="../../assets/banner1.png" />
-                <img src="../../assets/banner2.png" />
-                <img src="../../assets/banner3.png" /> -->
-                <!-- <img src="../../assets/test4.png" /> -->
-                <!-- <img src="../../assets/test5.png" /> -->
-                <img src="../../assets/test5.png" height="400px" />
-                <img src="../../assets/test6.png" height="400px"/>
-            </carousel>
-        </div>
+      <div class="carosel-wrap">
+        <carousel v-bind="options" @initialized="init" @changed="changed">
+          <img src="../../assets/RBANNER.png" width="50vw" height="400vh" />
+          <img src="../../assets/RBANNER2.png" width="50vw" height="400vh" />
+          <!-- <img src="../../assets/test5.png" height="400px" width="50px" />
+          <img src="../../assets/test6.png" height="400px" width="50px" /> -->
+        </carousel>
       </div>
     </div>
-  </template>
-  
-  <script>
-  import carousel from "vue-owl-carousel2"
+  </div>
+</template>
 
-  export default {
-    name: "main-carousel",
-    components: {
-      "carousel": carousel,
-    },
-    data () {
-      return {
-        plugin: null,
-        options: {
-          autoplay: false,
-          items: 1,
-          startPosition: 0,
-          autoplayTimeout: 2500,
-          nav: false
-        }
-      };
-    },
-    methods: {
-      handleScroll() {
-        window.addEventListener("scroll", () => {
-          let scrollT = window.scrollY
+<script>
+import carousel from "vue-owl-carousel2";
 
-          if(scrollT > 0 && this.options.autoplay === false){
-            this.options.autoplay = true;
-            setTimeout(() => {
-              this.plugin.refresh();
-            }, 300);
-          } else if(scrollT === 0) {
-            this.options.autoplay = false;
-            setTimeout(() => {
-              this.plugin.refresh();
-            }, 300);
-          }
-        })
-      },
-      init() {
-        this.plugin = this.$children[0];
-      },
-      changed(e) {
-        this.options.startPosition = e.item.index;
+export default {
+  name: "main-carousel",
+  components: {
+    carousel: carousel
+  },
+  data() {
+    return {
+      plugin: null,
+      options: {
+        autoplay: true,
+        items: 1,
+        startPosition: 0,
+        autoplayTimeout: 3000,
+        nav: false
       }
-    },
-    mounted() {
-      this.handleScroll();
-    },
-    destroyed() {
-      window.removeEventListener("scroll", this.handelScroll);
-    },
-  }
-  </script>
-  
-  <style scoped>
+    };
+  },
+  methods: {
+    handleScroll() {
+      window.addEventListener("scroll", () => {
+        let scrollT = window.scrollY;
 
-  /* #ca {
-    
-  } */
-  .carousel {
-    /* border: 1px solid #000; */
-    position: relative;
-    object-fit: contain;
-    /* height: 50px; */
-    /* margin: auto; */
+        if (scrollT > 0 && this.options.autoplay === false) {
+          this.options.autoplay = true;
+          setTimeout(() => {
+            this.plugin.refresh();
+          }, 300);
+        } else if (scrollT === 0) {
+          this.options.autoplay = false;
+          setTimeout(() => {
+            this.plugin.refresh();
+          }, 300);
+        }
+      });
+    },
+    init() {
+      this.plugin = this.$children[0];
+    },
+    changed(e) {
+      this.options.startPosition = e.item.index;
+    }
+  },
+  mounted() {
+    this.handleScroll();
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handelScroll);
   }
-  .carousel-wrap {
-    width: auto;
-    /* height: 100%; */
-    min-height: 20px;
-    
-    
-  }
-  
-  </style>
+};
+</script>
 
+<style scoped>
+.carousel-wrap {
+  /* width: auto; */
+  /* height: 100%; */
+  margin: 50vw;
+  width: 20px;
+  min-height: 20px;
+  z-index: 1;
+}
+
+.owl-carousel .owl-item img {
+  display: block;
+  width: 70%;
+  margin-left: 15vw;
+  margin-right: 20vw;
+  margin-top: 3vh;
+}
+</style>
